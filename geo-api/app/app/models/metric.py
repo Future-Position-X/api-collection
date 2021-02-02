@@ -53,10 +53,7 @@ class Metric(BaseModel):
             1=1
         )"""
 
-        exec_dict = {
-            "offset": filters["offset"],
-            "limit": filters["limit"],
-        }
+        exec_dict = {"offset": filters["offset"], "limit": filters["limit"]}
 
         if filters["data_filter"] is not None:
             where += " AND "

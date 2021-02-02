@@ -1,3 +1,4 @@
+# type: ignore
 class Coords:
     def __init__(self, lng, lat):
         self.lng = lng

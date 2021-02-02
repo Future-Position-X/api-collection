@@ -73,7 +73,7 @@ def recover_password(
 
 
 @router.get("/reset-password/", response_model=schemas.Msg)
-def reset_password(token: str, db: Session = Depends(deps.get_db),) -> Any:
+def reset_password(token: str, db: Session = Depends(deps.get_db)) -> Any:
     """
     Reset password
     """

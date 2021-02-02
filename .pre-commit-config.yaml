@@ -8,49 +8,21 @@ repos:
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
 # geo-api
--   repo: https://github.com/psf/black
-    rev: 19.3b0
-    hooks:
-    -   id: black
-        files: ^geo-api/
--   repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.3
-    hooks:
-    -   id: flake8
-        args: ["--config=geo-api/.flake8", "--ignore=E203,W503"]
-        files: ^geo-api/
-# fastapi
 repos:
--   repo: https://github.com/pycqa/isort
-    rev: 5.5.2
+-   repo: local
     hooks:
-      - id: isort
-        files: ^geo-api-fastapi
--   repo: https://github.com/psf/black
-    rev: 19.3b0
-    hooks:
-    -   id: black
-        files: ^geo-api-fastapi/
--   repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.3
-    hooks:
-    -   id: flake8
-        args: ["--config=geo-api-fastapi/app/.flake8", "--ignore=E203,W503"]
-        files: ^geo-api-fastapi/
--   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: 'v0.770'
-    hooks:
-    -   id: mypy
-        args: ["--config-file", "geo-api-fastapi/app/mypy.ini"]
-        additional_dependencies:
-            - 'pydantic==1.6.1'
-            - 'sqlalchemy-stubs'
-        files: ^geo-api-fastapi/
+    -   id: geo-api
+        name: geo-api run lint
+        language: system
+        entry: bash -c 'cd geo-api/app && exec poetry run scripts/lint.sh'
+        pass_filenames: false
+        types: [text]
+        files: ^geo-api/
 # editor
 -   repo: local
     hooks:
     -   id: gia-editor
-        name: git-editor run eslint and prettier
+        name: gia-editor run eslint and prettier
         language: system
         entry: bash -c 'cd gia-editor && exec npx eslint src --fix --ext .js,.vue && exec npx prettier --write --list-different --ignore-unknown src'
         pass_filenames: false

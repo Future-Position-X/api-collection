@@ -49,7 +49,7 @@ def update_collection_by_uuid(
 
 
 def copy_collection_to_new(
-    user: InternalUserDTO, src_collection_uuid: UUID, dst_collection_dto: CollectionDTO,
+    user: InternalUserDTO, src_collection_uuid: UUID, dst_collection_dto: CollectionDTO
 ) -> CollectionDTO:
     try:
         src_collection = Collection.find_readable_or_fail(user, src_collection_uuid)
@@ -64,7 +64,7 @@ def copy_collection_to_new(
 
 
 def copy_collection_from(
-    user: InternalUserDTO, src_collection_uuid: UUID, dst_collection_uuid: UUID,
+    user: InternalUserDTO, src_collection_uuid: UUID, dst_collection_uuid: UUID
 ) -> CollectionDTO:
     try:
         src_collection = Collection.find_readable_or_fail(user, src_collection_uuid)
